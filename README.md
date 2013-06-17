@@ -1,11 +1,11 @@
 #tileify.js
-##a plugin that will have more practical uses in subsequent iterations
+###a plugin that will have more practical uses in subsequent iterations
 
 Here is a demo of the current plugin:
-(http://tileify.johnvaghi.com)
+http://tileify.johnvaghi.com
 
 Here is where we're looking to go with it once I plugin-ify everything:
-(http://coffeeery.com)
+http://coffeeery.com
 
 Currently, here are the config options followed by their defaults:
 	$('.tileThis').tileify({
@@ -17,9 +17,10 @@ Currently, here are the config options followed by their defaults:
 		clickTrigger: '.tileifyTrigger' //if you want to trigger the scroll on click, here's your chance
 	});
 
+
 We're looking to add:
-	- ability to reverse the tiles if you scroll up
-	- ability to customize block styles/content
-	- match game
-	- grab images from a directory and make them the bg images of the blocks
+- ability to reverse the tiles if you scroll up
+- ability to customize block styles/content
+- match game
+- grab images from a directory and make them the bg images of the blocks
 
