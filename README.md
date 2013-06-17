@@ -5,9 +5,11 @@ Here is a demo of the current plugin:
 http://tileify.johnvaghi.com
 
 Here is where we're looking to go with it once I plugin-ify everything:
-http://coffeeery.com
+http://coffee-ery.com
 
 Currently, here are the config options followed by their defaults:
+
+```javascript
 	$('.tileThis').tileify({
 		numCols: 5, //blocks per column
 		numRows: 5, //blocks per row
@@ -16,9 +18,11 @@ Currently, here are the config options followed by their defaults:
 		autoScrollSpeed: 10000, //animate on pageload scroll-speed
 		clickTrigger: '.tileifyTrigger' //if you want to trigger the scroll on click, here's your chance
 	});
+```
 
 
 We're looking to add:
+
 - ability to reverse the tiles if you scroll up
 - ability to customize block styles/content
 - match game
