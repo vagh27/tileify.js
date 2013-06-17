@@ -16,7 +16,8 @@ $('.tileThis').tileify({
 	contHeight: 1500, //each row represents a height of by which that row is randomly assigned a location within - this is that height
 	autoAnimate: false, //animate the scroll on pageload
 	autoScrollSpeed: 10000, //animate on pageload scroll-speed
-	clickTrigger: '.tileifyTrigger' //if you want to trigger the scroll on click, here's your chance
+	clickTrigger: '.tileifyTrigger', //if you want to trigger the scroll on click, here's your chance
+	onEnd: function(){  } // to be triggered whenst the last block scrolls in
 });
 ```
 
