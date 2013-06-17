@@ -10,14 +10,14 @@ http://coffee-ery.com
 Currently, here are the config options followed by their defaults:
 
 ```javascript
-	$('.tileThis').tileify({
-		numCols: 5, //blocks per column
-		numRows: 5, //blocks per row
-		contHeight: 1500, //each row represents a height of by which that row is randomly assigned a location within - this is that height
-		autoAnimate: false, //animate the scroll on pageload
-		autoScrollSpeed: 10000, //animate on pageload scroll-speed
-		clickTrigger: '.tileifyTrigger' //if you want to trigger the scroll on click, here's your chance
-	});
+$('.tileThis').tileify({
+	numCols: 5, //blocks per column
+	numRows: 5, //blocks per row
+	contHeight: 1500, //each row represents a height of by which that row is randomly assigned a location within - this is that height
+	autoAnimate: false, //animate the scroll on pageload
+	autoScrollSpeed: 10000, //animate on pageload scroll-speed
+	clickTrigger: '.tileifyTrigger' //if you want to trigger the scroll on click, here's your chance
+});
 ```
 
 

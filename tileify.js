@@ -6,7 +6,8 @@
 		contHeight: 1500,
 		autoAnimate: false,
 		autoScrollSpeed: 10000,
-		clickTrigger: '.tileifyTrigger'
+		clickTrigger: '.tileifyTrigger',
+		onEnd: function(){  }
 	}
 
 	$.fn.tileify = function(options){
@@ -19,7 +20,6 @@
 			e = 0,
 			posFromTop = 0,
 			initialHeight = 0,
-			$window = $(window),
 			gatherHeights = [],
 			sortHeights = [],
 			blkWidth = $(document).width()/config.numCols,
@@ -51,8 +51,8 @@
 		sortHeights.sort(function(a,b){return a - b});
 
 		//$.get('count.php', function(data) { 
-			$window.bind('scroll',function(){
-				var scrollHeight =  $window.scrollTop();
+			$(window).bind('scroll',function(){
+				var scrollHeight =  $(window).scrollTop();
 				if(i%config.numCols===0 && i!=0) { posFromTop = blkHeight*(i/config.numCols); }
 				var pos = scrollHeight + posFromTop;
 				if(pos>sortHeights[i]){
@@ -65,10 +65,11 @@
 						blocks.eq(fixThis).addClass('color');
 					}*/
 					i++;
+					if(i==(sortHeights.length-1)) config.onEnd();
 				}
 			});
 		//});
-		
+	
 		$(config.clickTrigger).click(function(){ $("html, body").animate({ scrollTop: $(document).height() }, config.autoScrollSpeed); });
 
 		return this;
