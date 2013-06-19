@@ -22,11 +22,13 @@ $('.tileThis').tileify({
 });
 ```
 
+To sqaush any performance issues related to having too many tiles and too fast a scroll-speed, use the following fancy equation:
+(numCols * numRows) * 100 = your minimum scroll speed
 
 We're looking to add:
 
 - ability to reverse the tiles if you scroll up
 - ability to customize block styles/content
 - match game
-- grab images from a directory and make them the bg images of the blocks
+- ~~grab images from a directory and make them the bg images of the blocks~~
 
