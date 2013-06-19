@@ -14,12 +14,16 @@ $('.tileThis').tileify({
 	numCols: 5, //blocks per column
 	numRows: 5, //blocks per row
 	contHeight: 1500, //each row represents a height of by which that row is randomly assigned a location within - this is that height
-	autoAnimate: false, //animate the scroll on pageload
+	autoAnimate: true, //animate the scroll on pageload
 	autoScrollSpeed: 10000, //animate on pageload scroll-speed
 	clickTrigger: '.tileifyTrigger', //if you want to trigger the scroll on click, here's your chance
 	photoFile: null, //add an image directory here and tileify will grab the images and randomly insert them into the tiles
-	scrollBlockStyles: { }, //you can define block styles here
-	fixedBlockStyles: { }, //and here styles for when the block becomes fixed...it's probably a better idea to just define .tileifyBlock and .tileifyBlockFixed styles in your css
+	scrollBlockStyles: { 
+			'background-color':'#ccc',
+			'opacity':'0.5',
+			'border' : '1px solid #fff'
+	}, //you can define block styles here
+	fixedBlockStyles: { }, //and here are styles for when the block becomes fixed...it's probably a better idea to just define .tileifyBlock and .tileifyBlockFixed styles in your css
 	onEnd: function(){  } // to be triggered whenst the last block scrolls in
 });
 ```
@@ -38,6 +42,7 @@ We're looking to add:
 ##dependencies
 - jQuery
 
-##browswer support
-So everything is pretty much good to go save for anything below IE8 Compat. Everything will work in IE7 except for the image wall functionality.
+##browser support
+- everything is pretty much good to go save for anything below IE8 Compat. 
+- IE7 sans image wall functionality should work.
 
