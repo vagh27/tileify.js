@@ -18,6 +18,8 @@ $('.tileThis').tileify({
 	autoScrollSpeed: 10000, //animate on pageload scroll-speed
 	clickTrigger: '.tileifyTrigger', //if you want to trigger the scroll on click, here's your chance
 	photoFile: null, //add an image directory here and tileify will grab the images and randomly insert them into the tiles
+	scrollBlockStyles: { }, //you can define block styles here
+	fixedBlockStyles: { }, //and here styles for when the block becomes fixed...it's probably a better idea to just define .tileifyBlock and .tileifyBlockFixed styles in your css
 	onEnd: function(){  } // to be triggered whenst the last block scrolls in
 });
 ```
@@ -28,7 +30,14 @@ To sqaush any performance issues related to having too many tiles and too fast a
 We're looking to add:
 
 - ability to reverse the tiles if you scroll up
-- ability to customize block styles/content
-- match game
+- ~~ability to customize block styles/content~~
+- IE7 image wall support
+- ~~no CSS dependency~~
 - ~~grab images from a directory and make them the bg images of the blocks~~
+
+##dependencies
+- jQuery
+
+##browswer support
+So everything is pretty much good to go save for anything below IE8 Compat. Everything will work in IE7 except for the image wall functionality.
 

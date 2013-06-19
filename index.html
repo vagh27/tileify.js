@@ -18,7 +18,17 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="tileify.js"></script>
 		<script type="text/javascript">
-			$('.tileThis').tileify({ numCols:10, numRows:10, autoAnimate: true, autoScrollSpeed:10000, photoFile: 'img/fodder/', onEnd: function(){ alert('we\'re done here') } });
+			$('.tileThis').tileify({ 
+				numCols:10, 
+				numRows:10, 
+				autoAnimate: true, 
+				autoScrollSpeed:10000, 
+				photoFile: 'img/fodder/',
+				fixedBlockStyles : {
+					'opacity':'0.3'
+				},
+				onEnd: function(){ alert('we\'re done here') }
+			});
 		</script>
 	</body>
 </html>

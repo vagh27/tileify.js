@@ -1,14 +1,3 @@
 body { margin:0px; background:url(../img/bg_logo.png) no-repeat center center fixed; font-family:arial, helvetica, sans-serif; overflow-x: hidden; }
-	div.tileifyBlock { background-color:#ccc; position:absolute; opacity:.5; border:1px solid #fff; filter: alpha(opacity=50); }
-	div.fixThis { position:fixed; opacity:.3; filter: alpha(opacity=30); }
-
-	/*  css remnants from the un plugin-ified version >> coffeeery.com */
-	 div.fixThis.blank { opacity:0; }
-	 div.fixThis { background-size:cover !important; }
-		 div.fixThis.bgImage:hover { background-position:center center !important; opacity:.9; }
-	 div.f a, div.t a { display:block; color:#fff; text-decoration:none; display:none; }
-		 div.fixThis.f:hover a, div.fixThis.t:hover a { display:block; }
-	 div.fixThis.f:hover { background:#3b5998; }
-	 div.fixThis.t:hover { background:#00b9f4; }
-	 div.i a { display:block; color:#fff; text-decoration:none; }
-		 div.fixThis.i:hover { background:#23201D; }
+	div.tileifyBlock { filter: alpha(opacity=50); }
+	div.tileifyBlockFixed { filter: alpha(opacity=30); background-size:cover !important; }

@@ -4,10 +4,16 @@
 		numCols: 5,
 		numRows: 5,
 		contHeight: 1500,
-		autoAnimate: false,
+		autoAnimate: true,
 		autoScrollSpeed: 10000,
 		clickTrigger: '.tileifyTrigger',
 		photoFile: null,
+		scrollBlockStyles: { 
+			'background-color':'#ccc',
+			'opacity':'0.5',
+			'border' : '1px solid #fff'
+		},
+		fixedBlockStyles: { },
 		onEnd: function(){  }
 	}
 
@@ -33,7 +39,8 @@
 		$(this).html(blockHTML);
 		var blocks = $(this).children('.tileifyBlock');
 
-		blocks.css({width:blkWidth,height:blkHeight,lineHeight:blkHeight+"px"});
+		//custom user styles followed by styles we just gotta override to make this thing work
+		blocks.css(config.scrollBlockStyles).css({width:blkWidth,height:blkHeight,'position':'absolute'});
 
 		$('body').css({height:(config.contHeight*config.numRows)+100});
 		if(config.autoAnimate===true)$("html, body").animate({ scrollTop: $(document).height() }, config.autoScrollSpeed);
@@ -79,7 +86,7 @@
 				var pos = scrollHeight + posFromTop;
 				if(pos>sortHeights[i]){
 					var fixThis = $.inArray(sortHeights[i], gatherHeights);
-					blocks.eq(fixThis).addClass('fixThis').css({top:posFromTop});
+					blocks.eq(fixThis).css(config.fixedBlockStyles).css({top:posFromTop,'position':'fixed'}).addClass('tileifyBlockFixed');
 
 					//add background image from imageWall array
 					if(imageWall!=null){
