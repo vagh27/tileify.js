@@ -7,6 +7,7 @@
 		autoAnimate: false,
 		autoScrollSpeed: 10000,
 		clickTrigger: '.tileifyTrigger',
+		photoFile: null,
 		onEnd: function(){  }
 	}
 
@@ -23,7 +24,8 @@
 			gatherHeights = [],
 			sortHeights = [],
 			blkWidth = $(document).width()/config.numCols,
-			blkHeight = $(document).height()/config.numRows;
+			blkHeight = $(document).height()/config.numRows,
+			imageWall = [];
 
 
 		//set up the container
@@ -50,7 +52,27 @@
 
 		sortHeights.sort(function(a,b){return a - b});
 
-		//$.get('count.php', function(data) { 
+		if(config.photoFile != null){
+			$.ajax({
+				url: config.photoFile,
+				success: function(data){
+					buildImageWall(data);  	
+				},
+				error: function(e){ alert('there seems to be a problem with your photoFile path') }
+			});
+		}
+		else{ doScroll(null); }
+		
+
+		function buildImageWall(data){
+			$(data).find("a:contains(.jpg)").each(function(){
+				var images = $(this).attr("href");
+				imageWall.push(images);
+			});
+			doScroll(imageWall);
+		}
+		
+		function doScroll(imageWall){
 			$(window).bind('scroll',function(){
 				var scrollHeight =  $(window).scrollTop();
 				if(i%config.numCols===0 && i!=0) { posFromTop = blkHeight*(i/config.numCols); }
@@ -58,18 +80,22 @@
 				if(pos>sortHeights[i]){
 					var fixThis = $.inArray(sortHeights[i], gatherHeights);
 					blocks.eq(fixThis).addClass('fixThis').css({top:posFromTop});
-					//blocks.eq(fixThis).addClass('color');
-					/*if (!blocks.eq(fixThis).hasClass('red')){
-						//var whichPic = Math.floor(Math.random()*(picArray.length));
-						//blocks.eq(fixThis).addClass('bgImage').css({background:'url('+picArray[whichPic]+') no-repeat center '+(blkHeight+1)+'px #dddddd'});
-						blocks.eq(fixThis).addClass('color');
-					}*/
+
+					//add background image from imageWall array
+					if(imageWall!=null){
+						var whichPic = Math.floor(Math.random()*(imageWall.length));
+						blocks.eq(fixThis).css({background:'url('+config.photoFile + "/" + imageWall[whichPic]+') no-repeat center center #dddddd'});
+						//if you want the image hidden on load blocks.eq(fixThis).css({background:'url('+config.photoFile + "/" + imageWall[whichPic]+') no-repeat center '+(blkHeight+1)+'px #dddddd'});
+					}
 					i++;
+
+					//trigger onEnd function
 					if(i==(sortHeights.length-1)) config.onEnd();
 				}
-			});
-		//});
-	
+			});	
+		}
+
+		//trigger scroll onclick
 		$(config.clickTrigger).click(function(){ $("html, body").animate({ scrollTop: $(document).height() }, config.autoScrollSpeed); });
 
 		return this;
