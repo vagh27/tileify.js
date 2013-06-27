@@ -12,7 +12,7 @@
 		numRows: 5,
 		contHeight: 1500,
 		autoAnimate: true,
-		autoScrollSpeed: 25000,
+		autoScrollSpeed: 10000,
 		clickTrigger: '.tileifyTrigger',
 		photoFile: null,
 		scrollBlockStyles: { 

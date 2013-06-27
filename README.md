@@ -4,9 +4,6 @@
 Here is a demo of the current plugin:
 http://tileify.johnvaghi.com
 
-Here is where we're looking to go with it once I plugin-ify everything:
-http://coffee-ery.com
-
 Currently, here are the config options followed by their defaults:
 
 ```javascript
@@ -17,7 +14,7 @@ $('.tileThis').tileify({
 	autoAnimate: true, //animate the scroll on pageload
 	autoScrollSpeed: 10000, //animate on pageload scroll-speed
 	clickTrigger: '.tileifyTrigger', //if you want to trigger the scroll on click, here's your chance
-	photoFile: null, //add an image directory here and tileify will grab the images and randomly insert them into the tiles
+	photoFile: null, //add an image directory here and tileify will grab the images and randomly insert them into the tiles e.g "/images/"
 	scrollBlockStyles: { 
 			'background-color':'#ccc',
 			'opacity':'0.5',
@@ -41,7 +38,7 @@ We're looking to add:
 
 ##dependencies
 - jQuery
-- php is needed for the imageWall support
+- php is needed for imageWall support
 
 ##browser support
 - everything is pretty much good to go save for anything below IE8 Compat. 
