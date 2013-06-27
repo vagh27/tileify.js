@@ -1,3 +1,10 @@
+/*
+ *  Project: tileify.js
+ *  Description: a plugin that will have more practical uses in subsequent iterations
+ *  Author: John Vaghi
+ *  License: 
+ */
+
 ;(function($){		
 	
 	var defaults = {
@@ -5,7 +12,7 @@
 		numRows: 5,
 		contHeight: 1500,
 		autoAnimate: true,
-		autoScrollSpeed: 10000,
+		autoScrollSpeed: 25000,
 		clickTrigger: '.tileifyTrigger',
 		photoFile: null,
 		scrollBlockStyles: { 
@@ -25,33 +32,35 @@
 			a,b,c,x,
 			i = 0,
 			e = 0,
+			screenHeight = $(document).height();
 			posFromTop = 0,
 			initialHeight = 0,
 			gatherHeights = [],
 			sortHeights = [],
 			blkWidth = $(document).width()/config.numCols,
-			blkHeight = $(document).height()/config.numRows,
+			blkHeight = screenHeight/config.numRows,
 			imageWall = [];
 
 
 		//set up the container
-		for(var t = 0; t <= totalBlocks; t++) { blockHTML += "<div class='tileifyBlock'></div>"; }
+		for(var t = 0; t < totalBlocks; t++) { blockHTML += "<div style='display:none;' class='tileifyBlock'></div>"; }
 		$(this).html(blockHTML);
 		var blocks = $(this).children('.tileifyBlock');
 
 		//custom user styles followed by styles we just gotta override to make this thing work
 		blocks.css(config.scrollBlockStyles).css({width:blkWidth,height:blkHeight,'position':'absolute'});
 
-		$('body').css({height:(config.contHeight*config.numRows)+100});
-		if(config.autoAnimate===true)$("html, body").animate({ scrollTop: $(document).height() }, config.autoScrollSpeed);
-
+		//est height of the page
+		$('body').css({height:(config.contHeight*config.numRows)+50+config.contHeight});
+		
+		//abs position blocks / push heights into arrays
 		for(e; e <= blocks.length; e+=config.numCols) {
 			var col = 1;
 			blocks.slice(e,e+config.numCols).each(function(){
-				x  = Math.floor((Math.random()*((initialHeight+config.contHeight)-initialHeight))+initialHeight);
+				x  = Math.floor((Math.random()*((initialHeight+config.contHeight)-initialHeight))+initialHeight+screenHeight);
 				gatherHeights.push(x);
 				sortHeights.push(x);
-				$(this).css({top:x,left:((col-1)*blkWidth)});
+				$(this).css({top:x,left:((col-1)*blkWidth),display:'block'});
 				col++;
 			});
 			initialHeight += config.contHeight;
@@ -61,21 +70,26 @@
 
 		if(config.photoFile != null){
 			$.ajax({
-				url: config.photoFile,
+				url: 'count.php',
+				data: {
+			    	path: config.photoFile
+			    },
 				success: function(data){
 					buildImageWall(data);  	
 				},
-				error: function(e){ alert('there seems to be a problem with your photoFile path') }
+				error: function(e){ 
+					console.log(e);
+					alert('there seems to be a problem with your photoFile path') 
+				}
 			});
 		}
 		else{ doScroll(null); }
 		
 
 		function buildImageWall(data){
-			$(data).find("a:contains(.jpg)").each(function(){
-				var images = $(this).attr("href");
-				imageWall.push(images);
-			});
+			//remove last comma
+			data = data.substring(0, data.length - 1);
+			var imageWall = data.split(",");
 			doScroll(imageWall);
 		}
 		
@@ -91,7 +105,7 @@
 					//add background image from imageWall array
 					if(imageWall!=null){
 						var whichPic = Math.floor(Math.random()*(imageWall.length));
-						blocks.eq(fixThis).css({background:'url('+config.photoFile + "/" + imageWall[whichPic]+') no-repeat center center #dddddd'});
+						blocks.eq(fixThis).css({background:'url(' + imageWall[whichPic]+') no-repeat center center #dddddd'});
 						//if you want the image hidden on load blocks.eq(fixThis).css({background:'url('+config.photoFile + "/" + imageWall[whichPic]+') no-repeat center '+(blkHeight+1)+'px #dddddd'});
 					}
 					i++;
@@ -102,7 +116,11 @@
 			});	
 		}
 
-		//trigger scroll onclick
+		
+		//scroll automatically
+		if(config.autoAnimate===true)$("html, body").animate({ scrollTop: $(document).height() }, config.autoScrollSpeed);
+
+		//scroll onclick
 		$(config.clickTrigger).click(function(){ $("html, body").animate({ scrollTop: $(document).height() }, config.autoScrollSpeed); });
 
 		return this;

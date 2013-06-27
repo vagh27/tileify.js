@@ -41,6 +41,7 @@ We're looking to add:
 
 ##dependencies
 - jQuery
+- php is needed for the imageWall support
 
 ##browser support
 - everything is pretty much good to go save for anything below IE8 Compat. 
