@@ -74,7 +74,7 @@
         function setUpContainer(imageWall){
             //set up the container
             for(var t = 0; t < totalBlocks; t++) { 
-                var styles = "display:none;";
+                var styles = "";
                 if(imageWall){
                     var whichPic = Math.floor(Math.random()*(imageWall.length));
                     styles += " background:url(" + imageWall[whichPic] + ") no-repeat center -999px #dddddd;";
@@ -99,7 +99,7 @@
                     x  = Math.floor((Math.random()*((initialHeight+config.contHeight)-initialHeight))+initialHeight+screenHeight);
                     gatherHeights.push(x);
                     sortHeights.push(x);
-                    $(this).css({top:x,left:((col-1)*blkWidth),display:'block'});
+                    $(this).css({top:x,left:((col-1)*blkWidth)});
                     col++;
                 });
                 initialHeight += config.contHeight;
