@@ -15,18 +15,14 @@ $('.tileThis').tileify({
 	autoScrollSpeed: 10000, //animate on pageload scroll-speed
 	clickTrigger: '.tileifyTrigger', //if you want to trigger the scroll on click, here's your chance
 	photoFile: null, //add an image directory here and tileify will grab the images and randomly insert them into the tiles e.g "/images/"
-	scrollBlockStyles: { 
-			'background-color':'#ccc',
-			'opacity':'0.5',
-			'border' : '1px solid #fff'
-	}, //you can define block styles here
-	fixedBlockStyles: { }, //and here are styles for when the block becomes fixed...it's probably a better idea to just define .tileifyBlock and .tileifyBlockFixed styles in your css
 	onEnd: function(){  } // to be triggered whenst the last block scrolls in
 });
 ```
 
 To sqaush any performance issues related to having too many tiles and too fast a scroll-speed, use the following fancy equation:
 (numCols * numRows) * 100 = your minimum scroll speed
+
+To style blocks, use class .tileifyBlock (scrolling, pre-fixed) and .tileifyBlockFixed (fixed)
 
 We're looking to add:
 
