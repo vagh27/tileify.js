@@ -7,7 +7,7 @@ http://tileify.johnvaghi.com
 ## basic implemenation
 
 ```javascript
-	$('.mySelector').tileify();
+$('.mySelector').tileify();
 ```
 
 ##config options (followed by their defaults)

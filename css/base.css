@@ -1,3 +1,6 @@
 body { margin:0px; background:url(../img/bg_logo.png) no-repeat center center fixed; font-family:arial, helvetica, sans-serif; overflow-x: hidden; overflow-y:scroll; }
 	div.tileifyBlock { filter: alpha(opacity=50); }
 	div.tileifyBlockFixed { filter: alpha(opacity=30); opacity:0.3; background-size:cover !important; }
+
+	a { display:none; text-align: center; color:#fff; padding:20px; background-color: #931515; -webkit-border-radius: 12px; border-radius: 12px; position: fixed; top:50%; left:50%; margin-left:-75px; text-decoration: none; }
+		a:hover { background-color: #990000;} 

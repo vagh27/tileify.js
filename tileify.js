@@ -1,5 +1,5 @@
 /*
- *  Project: tileify.js
+ *  Project: https://github.com/vagh27/tileify.js
  *  Description: a plugin that will have more practical uses in subsequent iterations
  *  Author: John Vaghi
  *  License: 
